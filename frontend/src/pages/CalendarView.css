@@ -1,0 +1,102 @@
+/* FullCalendar Dark Mode Overrides */
+.calendar-container {
+  --fc-page-bg-color: transparent;
+  --fc-neutral-bg-color: rgba(255, 255, 255, 0.05);
+  --fc-neutral-text-color: #94a3b8;
+  --fc-border-color: rgba(255, 255, 255, 0.1);
+
+  --fc-button-text-color: #fff;
+  --fc-button-bg-color: rgba(139, 92, 246, 0.1);
+  --fc-button-border-color: rgba(139, 92, 246, 0.3);
+  --fc-button-hover-bg-color: rgba(139, 92, 246, 0.2);
+  --fc-button-hover-border-color: rgba(139, 92, 246, 0.4);
+  --fc-button-active-bg-color: rgba(139, 92, 246, 0.4);
+  --fc-button-active-border-color: rgba(139, 92, 246, 0.6);
+
+  --fc-event-bg-color: #8b5cf6;
+  --fc-event-border-color: #8b5cf6;
+  --fc-event-text-color: #fff;
+
+  --fc-today-bg-color: rgba(139, 92, 246, 0.15);
+}
+
+.fc .fc-toolbar-title {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #fff;
+}
+
+.fc-theme-standard td, .fc-theme-standard th {
+  border-color: var(--fc-border-color) !important;
+}
+
+.fc .fc-daygrid-day-number {
+  color: #e2e8f0;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.fc .fc-col-header-cell-cushion {
+  color: #94a3b8;
+  padding: 8px 0;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.fc .fc-day-other .fc-daygrid-day-top {
+  opacity: 0.3;
+}
+
+.fc .fc-button {
+  text-transform: capitalize;
+  border-radius: 8px;
+  padding: 8px 16px;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active, .fc .fc-button-primary:not(:disabled):active {
+  background-color: var(--fc-button-active-bg-color) !important;
+  border-color: var(--fc-button-active-border-color) !important;
+  box-shadow: none !important;
+}
+
+.fc .fc-button-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(139, 92, 246, 0.25) !important;
+}
+
+.fc-h-event {
+  border: none !important;
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+  background-color: var(--fc-today-bg-color) !important;
+}
+
+.event-purple {
+  background-color: rgba(139, 92, 246, 0.15) !important;
+  border-left: 3px solid #8b5cf6 !important;
+  color: #c4b5fd !important;
+}
+
+.event-blue {
+  background-color: rgba(56, 189, 248, 0.15) !important;
+  border-left: 3px solid #38bdf8 !important;
+  color: #bae6fd !important;
+}
+
+.event-pink {
+  background-color: rgba(244, 114, 182, 0.15) !important;
+  border-left: 3px solid #f472b6 !important;
+  color: #fbcfe8 !important;
+}
+
+.event-gold {
+  background-color: rgba(251, 191, 36, 0.15) !important;
+  border-left: 3px solid #fbbf24 !important;
+  color: #fde68a !important;
+}
