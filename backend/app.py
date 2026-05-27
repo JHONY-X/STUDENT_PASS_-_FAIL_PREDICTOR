@@ -78,18 +78,33 @@ def register():
     major = data.get('major', '').lower()
     profile_image = data.get('profile_image', None)
     
-    if User.query.filter_by(username=username).first() or User.query.filter_by(email=email).first():
-        return jsonify({"msg": "User already exists"}), 400
-        
+    # Check for existing email (must be unique)
+    if User.query.filter_by(email=email).first():
+        return jsonify({"msg": "Email already registered"}), 400
+
+    # Allow duplicate usernames by generating a unique username if needed
+    existing_user = User.query.filter_by(username=username).first()
+    if existing_user:
+        # Create a short hash suffix from email to differentiate users with same username
+        import hashlib
+        suffix = hashlib.sha256(email.encode()).hexdigest()[:6]
+        username = f"{username}_{suffix}"
+
     hashed_password = generate_password_hash(password)
-    new_user = User(username=username, email=email, password=hashed_password, role=role, major=major, profile_image=profile_image)
-    
+    new_user = User(
+        username=username,
+        email=email,
+        password=hashed_password,
+        role=role,
+        major=major,
+        profile_image=profile_image,
+    )
+
     try:
         db.session.add(new_user)
         db.session.commit()
         recommendation = get_major_recommendations(major)
-            
-        return jsonify({"msg": "User created successfully", "recommendation": recommendation}), 201
+        return jsonify({"msg": "User created successfully", "username": username, "recommendation": recommendation}), 201
     except Exception as e:
         db.session.rollback()
         return jsonify({"msg": "Error creating user", "error": str(e)}), 500

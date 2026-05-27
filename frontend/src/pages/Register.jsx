@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
-import { UserPlus, Mail, Lock, User, BookOpen, CheckCircle, Image } from 'lucide-react';
+import { UserPlus, Mail, Lock, User, BookOpen, CheckCircle, Image, Eye, EyeOff } from 'lucide-react';
 
 function Register() {
   const [formData, setFormData] = useState({ username: '', email: '', password: '', role: 'student', major: '', profile_image: '' });
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [recommendation, setRecommendation] = useState(null);
