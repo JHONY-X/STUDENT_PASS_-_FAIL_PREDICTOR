@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 import joblib
@@ -48,6 +48,9 @@ def index():
     return jsonify({
         "message": "Welcome to the Student Pass/Fail Predictor API. Please visit the frontend application at http://localhost:5173"
     })
+@app.route('/favicon.ico')
+def favicon():
+    return send_file(os.path.join(app.root_path, 'static', 'favicon.png'), mimetype='image/png')
 
 def get_major_recommendations(major):
     major = (major or '').lower()
